@@ -45,6 +45,12 @@ variable nat_instance_type {
   default     = "t4g.nano"
 }
 
+variable use_spot_instances {
+  description = "Whether to use spot instances for the fck-nat instances."
+  type        = bool
+  default     = false
+}
+
 variable use_ssh {
   description = "Whether to allow SSH access to the fck-nat instances."
   type        = bool

@@ -138,10 +138,11 @@ module "nat_1" {
   route_tables_ids = {
     "private_route_table_1" = aws_route_table.private_route_table_1.id
   }
-  instance_type   = var.nat_instance_type
-  use_ssh         = var.use_ssh
-  ssh_key_name    = var.ssh_key_name
-  ssh_cidr_blocks = var.ssh_cidr_blocks
+  instance_type      = var.nat_instance_type
+  use_spot_instances = var.use_spot_instances
+  use_ssh            = var.use_ssh
+  ssh_key_name       = var.ssh_key_name
+  ssh_cidr_blocks    = var.ssh_cidr_blocks
 }
 
 module "nat_2" {
@@ -156,8 +157,9 @@ module "nat_2" {
   route_tables_ids = {
     "private_route_table_2" = aws_route_table.private_route_table_2.id
   }
-  instance_type   = var.nat_instance_type
-  use_ssh         = var.use_ssh
-  ssh_key_name    = var.ssh_key_name
-  ssh_cidr_blocks = var.ssh_cidr_blocks
+  instance_type      = var.nat_instance_type
+  use_spot_instances = var.use_spot_instances
+  use_ssh            = var.use_ssh
+  ssh_key_name       = var.ssh_key_name
+  ssh_cidr_blocks    = var.ssh_cidr_blocks
 }
