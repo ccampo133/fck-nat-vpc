@@ -4,10 +4,10 @@ Terraform module to create a VPC with the following resources:
 
 * A VPC.
 * One internet gateway.
-* Two public subnets (one per AZ).
-* Two private subnets (one per AZ).
+* Two public subnets (one per AZ) and their route tables.
+* Two private subnets (one per AZ) and their route tables.
 * Two [fck-nat](https://fck-nat.dev/stable/) instances (one per public subnet)
-  as NAT gateways.
+  as NAT gateways. These are controlled by ASGs.
 
 ## Usage
 

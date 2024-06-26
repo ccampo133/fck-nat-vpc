@@ -127,21 +127,37 @@ resource "aws_route_table_association" "private_subnet_2_association" {
 }
 
 module "nat_1" {
-  source = "RaJiska/fck-nat/aws"
+  # TODO: use release version - it doesn't have SSH support yet.
+  #source = "RaJiska/fck-nat/aws"
+  source = "github.com/RaJiska/terraform-aws-fck-nat"
 
-  name               = "${var.name}-fck-nat-az1"
-  vpc_id             = aws_vpc.vpc.id
-  subnet_id          = aws_subnet.public_subnet_1.id
-  update_route_table = true
-  route_table_id     = aws_route_table.private_route_table_1.id
+  name                = "${var.name}-fck-nat-az1"
+  vpc_id              = aws_vpc.vpc.id
+  subnet_id           = aws_subnet.public_subnet_1.id
+  update_route_tables = true
+  route_tables_ids = {
+    "private_route_table_1" = aws_route_table.private_route_table_1.id
+  }
+  instance_type   = var.nat_instance_type
+  use_ssh         = var.use_ssh
+  ssh_key_name    = var.ssh_key_name
+  ssh_cidr_blocks = var.ssh_cidr_blocks
 }
 
 module "nat_2" {
-  source = "RaJiska/fck-nat/aws"
+  # TODO: use release version - it doesn't have SSH support yet.
+  #source = "RaJiska/fck-nat/aws"
+  source = "github.com/RaJiska/terraform-aws-fck-nat"
 
-  name               = "${var.name}-fck-nat-az2"
-  vpc_id             = aws_vpc.vpc.id
-  subnet_id          = aws_subnet.public_subnet_2.id
-  update_route_table = true
-  route_table_id     = aws_route_table.private_route_table_2.id
+  name                = "${var.name}-fck-nat-az2"
+  vpc_id              = aws_vpc.vpc.id
+  subnet_id           = aws_subnet.public_subnet_2.id
+  update_route_tables = true
+  route_tables_ids = {
+    "private_route_table_2" = aws_route_table.private_route_table_2.id
+  }
+  instance_type   = var.nat_instance_type
+  use_ssh         = var.use_ssh
+  ssh_key_name    = var.ssh_key_name
+  ssh_cidr_blocks = var.ssh_cidr_blocks
 }
